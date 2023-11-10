@@ -9,20 +9,24 @@ public class Boat : MonoBehaviour
     public GameObject fishNetPrefab;
     public Transform fishNetpos;
     public float fishNetSpeed = 15f;
+    public GameObject load;
 
     private void Awake()
     {
+        load.SetActive(false);
         GlobalEventManager.OnCollected.AddListener(Collect);
         GlobalEventManager.OnDiscard.AddListener(Discard);
     }
 
     void Collect()
     {
+        load.SetActive(true);
         isCollected = true;
     }
 
     void Discard()
     {
+        load.SetActive(false);
         isCollected = false;
     }
 
@@ -30,7 +34,7 @@ public class Boat : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject fishnet = Instantiate(fishNetPrefab, fishNetpos.position, Quaternion.identity);
+            GameObject fishnet = Instantiate(fishNetPrefab, fishNetpos.position, transform.rotation);
             fishnet.GetComponent<Rigidbody>().AddForce(transform.forward * fishNetSpeed, ForceMode.Impulse);
             Destroy(fishnet, 2);
         }

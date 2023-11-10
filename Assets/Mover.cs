@@ -5,7 +5,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     
-    public float movingSpeed = 1;
+    public float movingSpeed = 50;
     public float rotationSpeed = 1;
     private Rigidbody _rb;
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class Mover : MonoBehaviour
             transform.Rotate(new Vector3(0,yRotation,0));
             float z = Input.GetAxis("Vertical");
             Vector3 moveDir = new Vector3(z, 0, 0);
-            transform.Translate(Vector3.forward * (z * movingSpeed));
+            transform.Translate(Vector3.forward * (z * movingSpeed * Time.deltaTime));
             //_rb.MovePosition(_rb.transform.forward + moveDir * (movingSpeed * Time.deltaTime));
         
         

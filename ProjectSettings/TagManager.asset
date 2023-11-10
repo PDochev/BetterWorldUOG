@@ -6,6 +6,7 @@ TagManager:
   tags:
   - rubbish
   - port
+  - FishNet
   layers:
   - Default
   - TransparentFX

@@ -22,7 +22,7 @@ public class CameraControl : MonoBehaviour
         _camera = GetComponentInChildren<Camera>();
 
     }
-    void FixedUpdate()
+    void LateUpdate()
     {
         Move();
         Zoom();
